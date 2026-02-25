@@ -4,12 +4,12 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
 export function CTAForm() {
-  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) {
+    if (phone) {
       setSubmitted(true);
     }
   };
@@ -17,9 +17,9 @@ export function CTAForm() {
   if (submitted) {
     return (
       <div className="text-center py-8">
-        <p className="font-serif text-2xl text-primary mb-2">Благодарим вас</p>
+        <p className="font-serif text-2xl text-primary mb-2">Заявка принята!</p>
         <p className="text-muted-foreground">
-          Ваша заявка получена. Мы свяжемся с вами в ближайшее время.
+          Свяжусь с вами в ближайшее время для обсуждения деталей и замера.
         </p>
       </div>
     );
@@ -28,10 +28,10 @@ export function CTAForm() {
   return (
     <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
       <Input
-        type="email"
-        placeholder="Введите ваш email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
+        type="tel"
+        placeholder="Ваш номер телефона"
+        value={phone}
+        onChange={(e) => setPhone(e.target.value)}
         required
         className="flex-1 bg-card border-border text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-primary"
       />
@@ -39,7 +39,7 @@ export function CTAForm() {
         type="submit"
         className="bg-primary text-primary-foreground hover:bg-primary/90 font-medium tracking-wider uppercase text-sm px-8 transition-all duration-300"
       >
-        Отправить заявку
+        Записаться на замер
       </Button>
     </form>
   );
